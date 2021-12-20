@@ -2,13 +2,25 @@
 <?php
     $firstname = $name = $email = $phone = $message = "";
     if ($_SERVER["REQUEST_METHOD"] == "POST"){
-        $firstname = $_POST["firstname"];
-        $name = $_POST["name"];
-        $email = $_POST["email"];
-        $phone = $_POST["phone"];
-        $message = $_POST["message"];
+        $firstname = verifyInput($_POST["firstname"]);
+        $name = verifyInput($_POST["name"]);
+        $email = verifyInput($_POST["email"]);
+        $phone = verifyInput($_POST["phone"]);
+        $message = verifyInput($_POST["message"]);
 
     }
+/**
+ * @param $var
+ * @return string
+ */
+function verifyInput($var): string
+    {
+        $var = trim($var);
+        $var = stripslashes($var);
+        return htmlspecialchars($var);
+
+    }
+
 ?>
 
 <!DOCTYPE html>
@@ -33,7 +45,7 @@
         </div>
         <div class="row">
             <div class="col-lg-10 col-lg-offset-1">
-                <form id="contact-form" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>" role="form">
+                <form id="contact-form" method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ; ?>" role="form">
                     <div class="row">
                         <div class="col-md-6">
                             <label for="firstname">Prenom<span class="blue">*</span></label>
