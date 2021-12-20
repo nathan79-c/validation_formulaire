@@ -1,3 +1,16 @@
+
+<?php
+    $firstname = $name = $email = $phone = $message = "";
+    if ($_SERVER["REQUEST_METHOD"] == "POST"){
+        $firstname = $_POST["firstname"];
+        $name = $_POST["name"];
+        $email = $_POST["email"];
+        $phone = $_POST["phone"];
+        $message = $_POST["message"];
+
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,31 +33,31 @@
         </div>
         <div class="row">
             <div class="col-lg-10 col-lg-offset-1">
-                <form id="contact-form" method="post" action="" role="form">
+                <form id="contact-form" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>" role="form">
                     <div class="row">
                         <div class="col-md-6">
                             <label for="firstname">Prenom<span class="blue">*</span></label>
-                            <input type="text" id="firstname" name="firstname" class="form-control" placeholder="votre prenom">
+                            <input type="text" id="firstname" name="firstname" class="form-control" placeholder="votre prenom" value="<?php echo $firstname; ?>">
                             <p class="comments">Message d'erreur</p>
                         </div>
                         <div class="col-md-6">
                             <label for="name">Nom<span class="blue">*</span></label>
-                            <input type="text" id="name" name="name" class="form-control" placeholder="votre nom">
+                            <input type="text" id="name" name="name" class="form-control" placeholder="votre nom" value="<?php echo $name; ?>">
                             <p class="comments">Message d'erreur</p>
                         </div>
                         <div class="col-md-6">
                             <label for="email">Email<span class="blue">*</span></label>
-                            <input type="text" id="email" name="email" class="form-control" placeholder="votre email">
+                            <input type="text" id="email" name="email" class="form-control" placeholder="votre email" value="<?php echo $email; ?>">
                             <p class="comments">Message d'erreur</p>
                         </div>
                             <div class="col-md-6">
                                 <label for="phone">Telephone<span class="blue">*</span></label>
-                                <input type="text" id="phone" name="phone" class="form-control" placeholder="votre Telephone">
+                                <input type="text" id="phone" name="phone" class="form-control" placeholder="votre Telephone" value="<?php echo $phone; ?>">
                                 <p class="comments">Message d'erreur</p>
                             </div>
                             <div class="col-md-12">
                                 <label for="message">Message<span class="blue">*</span></label>
-                                <textarea id="message" name="message" class="form-control" placeholder="votre message" rows="4"></textarea>
+                                <textarea id="message" name="message" class="form-control" placeholder="votre message" rows="4"><?php echo $message; ?></textarea>
                                 <p class="comments">Message d'erreur</p>
                             </div>
                             <div class="col-md-12">
